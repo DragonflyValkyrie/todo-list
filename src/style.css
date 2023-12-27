@@ -2,6 +2,7 @@
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     --text-color: azure;
     --accent-color: #1992d4;
+    --sidebar-color: #c4d4e8;
     --white: #FFFFFF;
 }
 
@@ -24,6 +25,28 @@ body {
 .header-container h1 { 
     color: var(--text-color);
     font-size: 36px;
+}
+
+.sidebar-container {
+    background-color: var(--sidebar-color);
+}
+
+.sidebar-links {
+    font-size: 18px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.header-links a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.header-links li a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
 }
 
 .footer {
