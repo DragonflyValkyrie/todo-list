@@ -1,4 +1,4 @@
-import Projects from "./projects.js";
+import { Projects } from "./projects.js";
 
 const loadTasks = () => {
   const tasksContainer = document.createElement("div");
@@ -6,17 +6,14 @@ const loadTasks = () => {
 
   tasksContainer.innerHTML = "";
 
-  const projectOne = {
-    name: "Project One",
-    tasks: [
-      {
-        name: "Task 1",
-        description: "Description for Task 1",
-        dueDate: "2024-01-10",
-        priority: "High",
-      },
-    ],
-  };
+  const projectOne = new Projects("Project One");
+
+  projectOne.addTaskToProject(
+    "Task 1",
+    "Description for Task 1",
+    "2024-01-10",
+    "High"
+  );
 
   for (let i = 0; i < projectOne.tasks.length; i++) {
     const task = projectOne.tasks[i];
