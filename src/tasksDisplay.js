@@ -15,6 +15,31 @@ const loadTasks = () => {
     "High"
   );
 
+  projectOne.addTaskToProject(
+    "Task 1",
+    "Description for Task 1",
+    "2024-01-10",
+    "High"
+  );
+  projectOne.addTaskToProject(
+    "Task 1",
+    "Description for Task 1",
+    "2024-01-10",
+    "High"
+  );
+  projectOne.addTaskToProject(
+    "Task 1",
+    "Description for Task 1",
+    "2024-01-10",
+    "High"
+  );
+  projectOne.addTaskToProject(
+    "Task 1",
+    "Description for Task 1",
+    "2024-01-10",
+    "High"
+  );
+
   for (let i = 0; i < projectOne.tasks.length; i++) {
     const task = projectOne.tasks[i];
 
