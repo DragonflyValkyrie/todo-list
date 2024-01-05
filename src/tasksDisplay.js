@@ -24,36 +24,6 @@ const loadTasks = () => {
     "2024-01-10",
     "High"
   );
-  projectOne.addTaskToProject(
-    "Task 1",
-    "Description for Task 1",
-    "2024-01-10",
-    "High"
-  );
-  projectOne.addTaskToProject(
-    "Task 1",
-    "Description for Task 1",
-    "2024-01-10",
-    "High"
-  );
-  projectOne.addTaskToProject(
-    "Task 1",
-    "Description for Task 1",
-    "2024-01-10",
-    "High"
-  );
-  projectOne.addTaskToProject(
-    "Task 1",
-    "Description for Task 1",
-    "2024-01-10",
-    "High"
-  );
-  projectOne.addTaskToProject(
-    "Task 1",
-    "Description for Task 1",
-    "2024-01-10",
-    "High"
-  );
 
   // Loop through each task in the project
   for (let i = 0; i < projectOne.tasks.length; i++) {

@@ -10,10 +10,6 @@ const loadSideBarProjects = () => {
   titleElement.classList.add("project-titles");
   titleElement.textContent = "Projects";
 
-  // Project links
-  const projectLinks = document.createElement("ul");
-  projectLinks.classList.add("project-links");
-
   // Add Projects Button
   const projectAddButton = document.createElement("button");
   projectAddButton.classList.add("project-add-button");
@@ -28,6 +24,61 @@ const loadSideBarProjects = () => {
   projectAddButton.appendChild(buttonImage);
   sideProjectContainer.appendChild(titleElement);
   sideProjectContainer.appendChild(projectAddButton);
+
+  // Add event listener to the "Add Project" button
+  projectAddButton.addEventListener("click", () => {
+    // Hide the button
+    projectAddButton.classList.add("hidden");
+
+    // Create input field
+    const inputField = document.createElement("input");
+    inputField.classList.add("input-field");
+    inputField.type = "text";
+    inputField.placeholder = "Enter project name";
+    sideProjectContainer.appendChild(inputField);
+
+    // Create buttons container
+    const buttonContainer = document.createElement("div");
+    buttonContainer.classList.add("button-container");
+
+    // Create "Add" button
+    const addButton = document.createElement("button");
+    addButton.classList.add("add-button");
+
+    addButton.textContent = "Add";
+    addButton.addEventListener("click", () => {
+      // Add project to Projects class
+      const projectName = inputField.value;
+
+      console.log(`Project added: ${projectName}`);
+
+      // Remove input field and buttons
+      inputField.remove();
+      addButton.remove();
+      cancelButton.remove();
+
+      // Show the "Add Project" button
+      projectAddButton.classList.remove("hidden");
+    });
+    buttonContainer.appendChild(addButton);
+
+    // Create "Cancel" button
+    const cancelButton = document.createElement("button");
+    cancelButton.classList.add("cancel-button");
+
+    cancelButton.textContent = "Cancel";
+    cancelButton.addEventListener("click", () => {
+      // Remove input field and buttons
+      inputField.remove();
+      addButton.remove();
+      cancelButton.remove();
+
+      // Show the "Add Project" button
+      projectAddButton.classList.remove("hidden");
+    });
+    buttonContainer.appendChild(cancelButton);
+    sideProjectContainer.appendChild(buttonContainer);
+  });
 
   return sideProjectContainer;
 };
