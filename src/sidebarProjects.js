@@ -1,6 +1,7 @@
 import plusImage from "./images/plus.svg";
 // import optionsImage from "./images/dots-vertical.svg";
 // import pojectImage from "./images/progress-wrench.svg";
+import { Projects } from "./projects.js";
 
 const loadSideBarProjects = () => {
   const sideProjectContainer = document.createElement("div");
@@ -50,12 +51,24 @@ const loadSideBarProjects = () => {
       // Add project to Projects class
       const projectName = inputField.value;
 
+      // Validate the project name
+      if (projectName.trim() === "" || projectName.length > 26) {
+        alert(
+          "Project name should not be blank and should be less than 20 characters."
+        );
+        return;
+      }
+
+      // Create a new Projects instance with project name
+      const newProject = new Projects(projectName);
+
       console.log(`Project added: ${projectName}`);
 
       // Remove input field and buttons
       inputField.remove();
       addButton.remove();
       cancelButton.remove();
+      buttonContainer.remove();
 
       // Show the "Add Project" button
       projectAddButton.classList.remove("hidden");
@@ -72,6 +85,7 @@ const loadSideBarProjects = () => {
       inputField.remove();
       addButton.remove();
       cancelButton.remove();
+      buttonContainer.remove();
 
       // Show the "Add Project" button
       projectAddButton.classList.remove("hidden");
