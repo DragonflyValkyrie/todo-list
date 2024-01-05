@@ -1,54 +1,49 @@
-import inboxImage from './images/inbox.svg';
-import calenderTodayImage from './images/calendar-today.svg';
-import calenderWeekImage from './images/calendar-week.svg';
-// import plusImage from './images/plus.svg';
-// import optionsImage from './images/dots-vertical.svg';
-// import pojectImage from './images/progress-wrench.svg';
-
+import inboxImage from "./images/inbox.svg";
+import calenderTodayImage from "./images/calendar-today.svg";
+import calenderWeekImage from "./images/calendar-week.svg";
+import { loadSideBarProjects } from "./sidebarProjects.js";
 
 const loadSideBar = () => {
+  // Sidebar container creation
+  const sidebarContainer = document.createElement("div");
+  sidebarContainer.classList.add("sidebar-container");
 
-    // Sidebar container creation
-    const sidebarContainer = document.createElement("div");
-    sidebarContainer.classList.add("sidebar-container");
+  // Navigation links
+  const sidebarLinks = document.createElement("ul");
+  sidebarLinks.classList.add("sidebar-links");
 
-    // Navigation links
-    const sidebarLinks = document.createElement('ul');
-    sidebarLinks.classList.add('sidebar-links');
+  // List of links
+  const links = [
+    { text: "Inbox", image: inboxImage },
+    { text: "Today", image: calenderTodayImage },
+    { text: "This week", image: calenderWeekImage },
+  ];
 
-    // List of links
-    const links = [
-        { text: "Inbox", image: inboxImage },
-        { text: "Today", image: calenderTodayImage },
-        { text: "This week", image: calenderWeekImage }
-    ];
+  // Loop through the sidebar links to make them list items with anchor tags
+  for (let i = 0; i < links.length; i++) {
+    const li = document.createElement("li");
+    const a = document.createElement("a");
 
-    // Loop through the sidebar links to make them list items with anchor tags
-    for (let i = 0; i < links.length; i++) {
-        const li = document.createElement("li");  
-        const a = document.createElement("a");
+    // Append the image to the anchor tag
+    const icons = document.createElement("img");
+    icons.classList.add("side-icons");
+    icons.src = links[i].image;
+    icons.alt = links[i].text;
 
-        a.textContent = links[i];
+    a.appendChild(icons); // Append the image to the anchor
+    a.append(links[i].text); // Append the text to the anchor
 
-        // Create the image element for the link
-        const img = document.createElement('img');
-        img.src = links[i].image;
-        img.alt = links[i].text;
-        img.style.width = '24px'; 
-        img.style.height = '24px';
-        img.style.marginRight = '8px';
+    li.appendChild(a);
+    sidebarLinks.appendChild(li);
+  }
 
-        a.appendChild(img);
-        a.append(links[i].text);
+  sidebarContainer.appendChild(sidebarLinks);
 
-        li.appendChild(a);
-        sidebarLinks.appendChild(li);
-    }
+  // Load and append sidebarProjects to sidebar
+  const sideProjectContainer = loadSideBarProjects();
+  sidebarContainer.appendChild(sideProjectContainer);
 
-
-    sidebarContainer.appendChild(sidebarLinks);
-
-    return sidebarContainer;
+  return sidebarContainer;
 };
 
 export { loadSideBar };
