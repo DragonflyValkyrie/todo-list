@@ -78,4 +78,22 @@ document.addEventListener("DOMContentLoaded", function () {
       inputField.value = "";
     }
   });
+
+  document.addEventListener("projectSelected", (event) => {
+    const projectName = event.detail.projectName;
+    tasksContent.innerHTML = "";
+
+    // Find the corresponding project object in the projects list
+    const selectedProject = projectsList.find(
+      (project) => project.name === projectName
+    );
+
+    if (selectedProject) {
+      // Load and append the tasks for the selected project
+      const updateTasksContainer = loadTasks(selectedProject);
+      tasksContent.appendChild(updateTasksContainer);
+    } else {
+      console.log(`Project not found: ${projectName}`);
+    }
+  });
 });

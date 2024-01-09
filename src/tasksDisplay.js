@@ -1,14 +1,13 @@
-const loadTasks = (project) => {
+import { Projects } from "./projects.js";
+
+const loadTasks = (projectName) => {
   // Create a container for tasks
   const tasksContainer = document.createElement("div");
   tasksContainer.classList.add("task-container");
 
-  // Clear any existing content in the tasks container
-  tasksContainer.innerHTML = "";
-
   // Loop through each task in the project
-  for (let i = 0; i < project.tasks.length; i++) {
-    const task = project.tasks[i];
+  for (let i = 0; i < projectName.tasks.length; i++) {
+    const task = projectName.tasks[i];
 
     // Create a card for each task
     const taskCard = document.createElement("div");
@@ -30,7 +29,16 @@ const loadTasks = (project) => {
     // Create a button to remove the task
     const removeTask = document.createElement("button");
     removeTask.textContent = "Remove Task";
-    removeTask.dataset.index = i;
+
+    // Add event listener to remove the task when the button is clicked
+    removeTask.addEventListener("click", () => {
+      // Remove the task from the project
+      projectName.removeTaskFromProject(i);
+
+      // Re-render the tasks container to reflect the changes
+      tasksContainer.innerHTML = "";
+      tasksContainer.appendChild(loadTasks(projectName));
+    });
 
     // Append task details and remove button to the task card
     taskCard.appendChild(nameElement);
