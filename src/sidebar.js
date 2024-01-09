@@ -1,9 +1,11 @@
 import inboxImage from "./images/inbox.svg";
 import calenderTodayImage from "./images/calendar-today.svg";
 import calenderWeekImage from "./images/calendar-week.svg";
-import { loadSideBarProjects } from "./sidebarProjects.js";
+// import plusImage from "./images/plus.svg";
+// import optionsImage from "./images/dots-vertical.svg";
+// import pojectImage from "./images/progress-wrench.svg";
 
-const loadSideBar = () => {
+const loadSideBar = (projectsList) => {
   // Sidebar container creation
   const sidebarContainer = document.createElement("div");
   sidebarContainer.classList.add("sidebar-container");
@@ -39,8 +41,45 @@ const loadSideBar = () => {
 
   sidebarContainer.appendChild(sidebarLinks);
 
-  // Load and append sidebarProjects to sidebar
-  const sideProjectContainer = loadSideBarProjects();
+  // Create the sidebar container
+  const sideProjectContainer = document.createElement("div");
+  sideProjectContainer.classList.add("sideproject-container");
+
+  // Create the title element
+  const titleElement = document.createElement("h2");
+  titleElement.classList.add("project-titles");
+  titleElement.textContent = "Projects";
+
+  // Append the title to sideProjectContainer
+  sideProjectContainer.appendChild(titleElement);
+
+  // Dynamically create sidebar items for each project
+  projectsList.forEach((project) => {
+    const projectItem = document.createElement("div");
+    projectItem.classList.add("project-item");
+    projectItem.textContent = project.name;
+    sideProjectContainer.appendChild(projectItem);
+  });
+
+  const buttonContainer = document.createElement("div");
+  buttonContainer.classList.add("button-container");
+
+  // Input field for adding new project
+  const inputField = document.createElement("input");
+  inputField.classList.add("input-field");
+  inputField.type = "text";
+  inputField.placeholder = "Enter project name";
+  buttonContainer.appendChild(inputField);
+
+  // Add Project button
+  const addButton = document.createElement("button");
+  addButton.classList.add("add-button");
+  addButton.textContent = "Add";
+
+  // Add the buttons to the sideProjectContainer
+  buttonContainer.appendChild(addButton);
+
+  sideProjectContainer.appendChild(buttonContainer);
   sidebarContainer.appendChild(sideProjectContainer);
 
   return sidebarContainer;
