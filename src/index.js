@@ -25,6 +25,36 @@ document.addEventListener("DOMContentLoaded", function () {
     "2024-01-10",
     "High"
   );
+  defaultProject.addTaskToProject(
+    "Task 2",
+    "Description for Task 2",
+    "2024-01-10",
+    "High"
+  );
+  defaultProject.addTaskToProject(
+    "Task 2",
+    "Description for Task 2",
+    "2024-01-10",
+    "High"
+  );
+  defaultProject.addTaskToProject(
+    "Task 2",
+    "Description for Task 2",
+    "2024-01-10",
+    "High"
+  );
+  defaultProject.addTaskToProject(
+    "Task 2",
+    "Description for Task 2",
+    "2024-01-10",
+    "High"
+  );
+  defaultProject.addTaskToProject(
+    "Task 2",
+    "Description for Task 2",
+    "2024-01-10",
+    "High"
+  );
 
   // Add the default project to the projects list
   projectsList.push(defaultProject);
